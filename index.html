@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom methods</title>
+    <style>
+      body {
+        background-color: aliceblue;
+      }
+      .container {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 2px solid grey;
+        margin-bottom: 20px;
+      }
+      #result1 {
+        padding: 5px 10px;
+      }
+      #btn {
+        padding: 10px 15px;
+        font-size: large;
+        background-color: black;
+        color: white;
+      }
+      img {
+        width: auto;
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body onload="loadAlert()">
+    <div class="container">
+      <h2>On Change event</h2>
+      <label for="greeting">Select your greeting</label>
+      <select name="greeting" id="greeting" onchange="showGreeting()">
+        <option value="hello">Hello</option>
+        <option value="Good morning">Good morning</option>
+        <option value="Good Afternoon">Good Afternoon</option>
+        <option value="Good Night">Good Night</option>
+      </select>
+      <div id="result1">You selected:</div>
+    </div>
+    <div class="container">
+      <h2>On Click event</h2>
+      <button id="btn" onclick="changeMyColor()">
+        Click to change my color
+      </button>
+    </div>
+    <div class="container">
+      <h2>Onmouseover event</h2>
+      <p>Change image on mouse over</p>
+      <div>
+        <img
+          id="img"
+          onmouseover="changeImg()"
+          src="plane.jpg"
+          alt="image of plane"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <h2>onmouseout event</h2>
+      <p>Mouse out on img to change to ship</p>
+      <img id="img2" src="plane.jpg" alt="plane" onmouseout="mouseOutImg()" />
+    </div>
+    <div class="container">
+      <h2>keydown event</h2>
+      <p>hit the p key to trigger an alert</p>
+      <input
+        type="text"
+        onkeydown="triggerAlert()"
+        placeholder="enter something"
+      />
+    </div>
+    <div class="container">
+      <h2>onload event</h2>
+      <p>hit reload to trigger an alert</p>
+    </div>
+    <script>
+      function loadAlert() {
+        alert("Web page successfully loaded!");
+      }
+      function showGreeting() {
+        const onchangeRes = document.getElementById("result1");
+        const greeting = document.getElementById("greeting");
+        onchangeRes.innerHTML = "You selected " + greeting.value;
+      }
+      function changeMyColor() {
+        const btn = document.getElementById("btn");
+        const colors = [
+          "tomato",
+          "orange",
+          "dodgerblue",
+          "mediumseagreen",
+          "gray",
+          "slateblue",
+          "violet",
+          "red",
+        ];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        console.log(randomColor);
+        btn.style.backgroundColor = randomColor;
+      }
+      function changeImg() {
+        const img = document.getElementById("img");
+        img.src = "ship.jpg";
+        img.alt = "image of ship";
+      }
+      function mouseOutImg() {
+        const img2 = document.getElementById("img2");
+        img2.src = "ship.jpg";
+        img2.alt = "ship.jpg";
+      }
+      function triggerAlert() {
+        alert("You hit a key!");
+      }
+    </script>
+  </body>
+</html>
